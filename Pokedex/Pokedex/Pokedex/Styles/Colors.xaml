@@ -13,4 +13,5 @@
     <Color x:Key="YellowColor">#FFCE4B</Color>
     <Color x:Key="PurpleColor">#7C538C</Color>
     <Color x:Key="BrownColor">#B1736C</Color>
+    <Color x:Key="LightGrayColor">#F5F5F5</Color>
 </ResourceDictionary>

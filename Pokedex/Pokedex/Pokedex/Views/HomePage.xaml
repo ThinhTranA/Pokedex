@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Pokedex.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:style="clr-namespace:Pokedex.Styles"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <style:Colors />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="Frame" x:Key="SelectionFrame">
+                <Setter Property="Visual" Value="Material" />
+                <Setter Property="HeightRequest" Value="70" />
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="IsClippedToBounds" Value="True" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="HasShadow" Value="True" />
+            </Style>
+            <Style TargetType="Label" x:Key="SelectionFrameText">
+                <Setter Property="Margin" Value="20,0" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <ff:SvgCachedImage
+            Source="resource://Pokedex.Images.grayBall.svg"
+            Margin="0,-160,-110,0"
+            VerticalOptions="Start"
+            HorizontalOptions="End"
+            Opacity="0.1"
+            HeightRequest="300"
+            WidthRequest="300" />
+
+        <Grid Margin="25,40,25,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Text="What Pokemon &#x0a; are you looking for?"
+                VerticalOptions="Start"
+                FontSize="36"
+                TextColor="Black"
+                FontAttributes="Bold" />
+
+            <Frame
+                Grid.Row="1"
+                Margin="0,25"
+                HeightRequest="50"
+                IsClippedToBounds="True"
+                Padding="0"
+                CornerRadius="40"
+                HasShadow="False">
+                <SearchBar BackgroundColor="{StaticResource LightGrayColor}" Placeholder="Search Pokemon, Move, Ability etc" />
+            </Frame>
+
+            <Grid
+                Grid.Row="2"
+                ColumnSpacing="12"
+                RowSpacing="20">
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Style="{StaticResource SelectionFrame}"
+                    HasShadow="True"
+                    BackgroundColor="{StaticResource GreenColor}">
+                    <Grid>
+                        <Label Text="Pokedex" Style="{StaticResource SelectionFrameText}" />
+                        <ff:SvgCachedImage
+                            Margin="-20"
+                            Source="resource://Pokedex.Images.whiteBall.svg"
+                            HorizontalOptions="End"
+                            WidthRequest="100"
+                            HeightRequest="100" />
+                    </Grid>
+                </Frame>
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Style="{StaticResource SelectionFrame}"
+                    HasShadow="True"
+                    BackgroundColor="{StaticResource OrangeColor}">
+                    <Grid>
+                        <Label Text="Moves" Style="{StaticResource SelectionFrameText}" />
+                        <ff:SvgCachedImage
+                            Margin="-20"
+                            Source="resource://Pokedex.Images.whiteBall.svg"
+                            HorizontalOptions="End"
+                            WidthRequest="100"
+                            HeightRequest="100" />
+                    </Grid>
+                </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Style="{StaticResource SelectionFrame}"
+                    HasShadow="True"
+                    BackgroundColor="{StaticResource BlueColor}">
+                    <Grid>
+                        <Label Text="Abilities" Style="{StaticResource SelectionFrameText}" />
+                        <ff:SvgCachedImage
+                            Margin="-20"
+                            Source="resource://Pokedex.Images.whiteBall.svg"
+                            HorizontalOptions="End"
+                            WidthRequest="100"
+                            HeightRequest="100" />
+                    </Grid>
+                </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Style="{StaticResource SelectionFrame}"
+                    HasShadow="True"
+                    BackgroundColor="{StaticResource YellowColor}">
+                    <Grid>
+                        <Label Text="Items" Style="{StaticResource SelectionFrameText}" />
+                        <ff:SvgCachedImage
+                            Margin="-20"
+                            Source="resource://Pokedex.Images.whiteBall.svg"
+                            HorizontalOptions="End"
+                            WidthRequest="100"
+                            HeightRequest="100" />
+                    </Grid>
+                </Frame>
+                <Frame
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Style="{StaticResource SelectionFrame}"
+                    HasShadow="True"
+                    BackgroundColor="{StaticResource PurpleColor}">
+                    <Grid>
+                        <Label Text="Location" Style="{StaticResource SelectionFrameText}" />
+                        <ff:SvgCachedImage
+                            Margin="-20"
+                            Source="resource://Pokedex.Images.whiteBall.svg"
+                            HorizontalOptions="End"
+                            WidthRequest="100"
+                            HeightRequest="100" />
+                    </Grid>
+                </Frame>
+                <Frame
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Style="{StaticResource SelectionFrame}"
+                    HasShadow="True"
+                    BackgroundColor="{StaticResource BrownColor}">
+                    <Grid>
+                        <Label Text="Type Charts" Style="{StaticResource SelectionFrameText}" />
+                        <ff:SvgCachedImage
+                            Margin="-20"
+                            Source="resource://Pokedex.Images.whiteBall.svg"
+                            HorizontalOptions="End"
+                            WidthRequest="100"
+                            HeightRequest="100" />
+                    </Grid>
+                </Frame>
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Style="{StaticResource SelectionFrame}"
+                    HasShadow="True"
+                    BackgroundColor="{StaticResource GreenColor}">
+                    <Grid>
+                        <Label Text="Pokedex" Style="{StaticResource SelectionFrameText}" />
+                        <ff:SvgCachedImage
+                            Margin="-20"
+                            Source="resource://Pokedex.Images.whiteBall.svg"
+                            HorizontalOptions="End"
+                            WidthRequest="100"
+                            HeightRequest="100" />
+                    </Grid>
+                </Frame>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+
+
+
+</ContentPage>

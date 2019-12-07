@@ -12,13 +12,11 @@
 
   <ItemGroup>
     <None Remove="Images\grayBall.svg" />
-    <None Remove="Images\lightGrayBall.svg" />
     <None Remove="Images\whiteBall.svg" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Images\grayBall.svg" />
-    <EmbeddedResource Include="Images\lightGrayBall.svg" />
     <EmbeddedResource Include="Images\whiteBall.svg" />
   </ItemGroup>
 
@@ -34,8 +32,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Styles\Colors.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 </Project>
