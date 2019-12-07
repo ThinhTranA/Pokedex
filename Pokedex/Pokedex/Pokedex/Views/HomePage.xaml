@@ -7,6 +7,7 @@
     xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:style="clr-namespace:Pokedex.Styles"
+    xmlns:controls="clr-namespace:Pokedex.Controls"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -57,6 +58,8 @@
                 TextColor="Black"
                 FontAttributes="Bold" />
 
+
+
             <Frame
                 Grid.Row="1"
                 Margin="0,25"
@@ -65,7 +68,7 @@
                 Padding="0"
                 CornerRadius="40"
                 HasShadow="False">
-                <SearchBar BackgroundColor="{StaticResource LightGrayColor}" Placeholder="Search Pokemon, Move, Ability etc" />
+                <controls:SearchBar2 BackgroundColor="{StaticResource LightGrayColor}" Placeholder="Search Pokemon, Move, Ability etc" />
             </Frame>
 
             <Grid
