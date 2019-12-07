@@ -11,11 +11,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\grayBall.svg" />
+    <None Remove="Images\lightGrayBall.svg" />
+    <None Remove="Images\whiteBall.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\grayBall.svg" />
+    <EmbeddedResource Include="Images\lightGrayBall.svg" />
+    <EmbeddedResource Include="Images\whiteBall.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PokeApiNet\PokeApiNet.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Styles\Colors.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
