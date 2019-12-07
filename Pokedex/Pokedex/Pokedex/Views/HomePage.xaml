@@ -8,7 +8,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:style="clr-namespace:Pokedex.Styles"
     xmlns:controls="clr-namespace:Pokedex.Controls"
+    xmlns:vm="clr-namespace:Pokedex.ViewModels"
     mc:Ignorable="d">
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -75,6 +79,7 @@
                 Grid.Row="2"
                 ColumnSpacing="12"
                 RowSpacing="20">
+
                 <Frame
                     Grid.Row="0"
                     Grid.Column="0"
@@ -90,6 +95,9 @@
                             WidthRequest="100"
                             HeightRequest="100" />
                     </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ViewPokedexCommand}" />
+                    </Frame.GestureRecognizers>
                 </Frame>
                 <Frame
                     Grid.Row="0"
@@ -171,22 +179,7 @@
                             HeightRequest="100" />
                     </Grid>
                 </Frame>
-                <Frame
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Style="{StaticResource SelectionFrame}"
-                    HasShadow="True"
-                    BackgroundColor="{StaticResource GreenColor}">
-                    <Grid>
-                        <Label Text="Pokedex" Style="{StaticResource SelectionFrameText}" />
-                        <ff:SvgCachedImage
-                            Margin="-20"
-                            Source="resource://Pokedex.Images.whiteBall.svg"
-                            HorizontalOptions="End"
-                            WidthRequest="100"
-                            HeightRequest="100" />
-                    </Grid>
-                </Frame>
+
 
             </Grid>
 

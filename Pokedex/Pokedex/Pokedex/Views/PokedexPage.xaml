@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Pokedex.ViewModels"
+    xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ffc="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:style="clr-namespace:Pokedex.Styles"
+    mc:Ignorable="d"
+    x:Class="Pokedex.Views.PokedexPage">
+    <ContentPage.BindingContext>
+        <vm:PokedexViewmodel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <style:Colors />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <Grid>
+            <ff:SvgCachedImage
+                Source="resource://Pokedex.Images.grayBall.svg"
+                Margin="0,-72,-110,0"
+                VerticalOptions="Start"
+                HorizontalOptions="End"
+                Opacity="0.1"
+                HeightRequest="300"
+                WidthRequest="300" />
+
+
+            <Grid Margin="20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+
+
+                <Button
+                    Text="Back"
+                    VerticalOptions="End"
+                    HorizontalOptions="Start" />
+
+                <Label
+                    Grid.Row="1"
+                    Text="Pokedex"
+                    TextColor="Black"
+                    VerticalOptions="Start"
+                    FontSize="36"
+                    FontAttributes="Bold" />
+
+                <CollectionView
+                    Grid.Row="2"
+                    ItemsSource="{Binding PokemonModels}"
+                    FlowDirection="LeftToRight">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="5">
+
+                                <Frame
+                                    BackgroundColor="{StaticResource GreenColor}"
+                                    HeightRequest="120"
+                                    Padding="0"
+                                    IsClippedToBounds="True"
+                                    CornerRadius="20">
+
+                                    <Grid>
+                                        <Label
+                                            Text="{Binding DisplayName}"
+                                            Margin="20,20,0,0"
+                                            FontSize="18"
+                                            TextColor="White"
+                                            FontAttributes="Bold" />
+                                        <StackLayout Margin="20,50,0,0" BindableLayout.ItemsSource="{Binding Types}">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Frame
+                                                            Padding="0"
+                                                            IsClippedToBounds="True"
+                                                            BackgroundColor="White"
+                                                            Opacity="0.5"
+                                                            HorizontalOptions="Start"
+                                                            CornerRadius="10"
+                                                            HeightRequest="20"
+                                                            WidthRequest="50" />
+
+                                                        <Frame
+                                                            Padding="0"
+                                                            IsClippedToBounds="True"
+                                                            BackgroundColor="Transparent"
+                                                            HorizontalOptions="Start"
+                                                            CornerRadius="10"
+                                                            HeightRequest="20"
+                                                            WidthRequest="50">
+                                                            <Label
+                                                                HorizontalOptions="Center"
+                                                                VerticalOptions="Center"
+                                                                Text="{Binding .}"
+                                                                FontSize="10"
+                                                                FontAttributes="Bold"
+                                                                TextColor="White" />
+                                                        </Frame>
+                                                    </Grid>
+
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+
+                                        </StackLayout>
+
+                                        <ff:SvgCachedImage
+                                            Source="resource://Pokedex.Images.whiteBall.svg"
+                                            Margin="0,0,-5,-10"
+                                            VerticalOptions="End"
+                                            HorizontalOptions="End"
+                                            Opacity="0.1"
+                                            HeightRequest="90"
+                                            WidthRequest="90" />
+                                        <ffc:CachedImage
+                                            Margin="0,0,-5,0"
+                                            Source="{Binding ImageUrl}"
+                                            VerticalOptions="End"
+                                            HorizontalOptions="End"
+                                            WidthRequest="90"
+                                            HeightRequest="90" />
+                                    </Grid>
+
+                                </Frame>
+
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </Grid>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
