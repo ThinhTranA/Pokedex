@@ -34,7 +34,7 @@ namespace Pokedex.ViewModels
                 var poke = await pokiApiClient.GetResourceAsync<Pokemon>(i);
                 pokemons.Add(poke);
 
-                var pokeModel = new PokemonModel { DisplayName = poke.Name, ImageUrl = poke.Sprites.FrontDefault, Types = poke.Types.ToPokemonTypeModel() };
+                var pokeModel = poke.ToPokemonModel();
                 PokemonModels.Add(pokeModel);
             }
 
