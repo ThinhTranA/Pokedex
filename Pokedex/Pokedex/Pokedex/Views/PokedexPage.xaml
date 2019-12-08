@@ -67,7 +67,7 @@
                             <Grid Padding="5">
 
                                 <Frame
-                                    BackgroundColor="{StaticResource GreenColor}"
+                                    BackgroundColor="{Binding TypeColor}"
                                     HeightRequest="120"
                                     Padding="0"
                                     IsClippedToBounds="True"

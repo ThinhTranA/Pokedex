@@ -15,6 +15,7 @@ namespace Pokedex.Extensions
             {
                 DisplayName = pokemon.Name,
                 ImageUrl = pokemon.Sprites.FrontDefault,
+                TypeColor = pokemon.Types.ToTypeColor(),
                 Sprites = pokemon.Sprites.ToSpriteList(),
                 Types = pokemon.Types.ToPokemonTypeModel(),
                 Stats = pokemon.Stats.ToStatModels()
@@ -24,6 +25,8 @@ namespace Pokedex.Extensions
             return pokemonModel;
         }
 
+        
+       
 
         public static List<string> ToSpriteList(this PokemonSprites sprites)
         {
@@ -33,11 +36,13 @@ namespace Pokedex.Extensions
 
             foreach(var prop in properties)
             {
-                string url = string.Empty;
-                prop.GetValue(url, null);
+                if (prop.PropertyType != typeof(string)) continue;
 
-                if (!string.IsNullOrEmpty(url))
-                    spriteList.Add(url);
+                var imageUrl = prop.GetValue(sprites);
+
+                if (imageUrl == null) continue;
+
+                spriteList.Add(imageUrl.ToString());
             }
 
             return spriteList;

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using PropertyChanged;
+using Xamarin.Forms;
 
 namespace Pokedex.Models
 {
@@ -9,6 +10,12 @@ namespace Pokedex.Models
         public string DisplayName { get; set; }
         public string ImageUrl { get; set; }
         public List<string> Types { get; set; }
+
+        public Color TypeColor { get; set; }
+
+    //        < Color x:Key="GreenColor">#4FC1A6</Color>
+    //<Color x:Key="OrangeColor">#F7776A</Color>
+    //<Color x:Key="BlueColor">#58AAF6</Color>
 
         //About
         public List<string> Sprites { get; set; }

@@ -29,7 +29,7 @@ namespace Pokedex.ViewModels
 
             var pokemons = new List<Pokemon>();
             
-            for(var i =1; i< 11; i++)
+            for(var i =1; i< 101; i++)
             {
                 var poke = await pokiApiClient.GetResourceAsync<Pokemon>(i);
                 pokemons.Add(poke);
