@@ -2,6 +2,7 @@
 using PokeApiNet.Models;
 using Pokedex.Extensions;
 using Pokedex.Models;
+using Pokedex.Views;
 using PropertyChanged;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,19 @@ namespace Pokedex.ViewModels
     {
         public ObservableCollection<PokemonModel> PokemonModels { get; set; } = new ObservableCollection<PokemonModel>();
         public ICommand LoadPokemonsCommand { get; set; }
+        public ICommand ViewPokemonDetailsCommand { get; set; }
         public PokedexViewmodel()
         {
             LoadPokemonsCommand = new Command(async () => await LoadPokemons());
+            ViewPokemonDetailsCommand = new Command(ViewPokemonDetails);
             LoadPokemonsCommand.Execute(null);
+        }
+
+        private void ViewPokemonDetails(object selectedPokemon)
+        {
+            Application.Current.MainPage.Navigation.PushModalAsync(
+                new PokemonDetailsPage(new PokemonDetailsViewModel((PokemonModel)selectedPokemon))
+                );
         }
 
         public async Task LoadPokemons()

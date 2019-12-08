@@ -44,6 +44,7 @@
 
                 <Button
                     Text="Back"
+                    Command="{Binding ViewPokemonDetailsCommand}"
                     VerticalOptions="End"
                     HorizontalOptions="Start" />
 
@@ -57,7 +58,11 @@
 
                 <CollectionView
                     Grid.Row="2"
+                    x:Name="collectionView"
                     ItemsSource="{Binding PokemonModels}"
+                    SelectionMode="Single"
+                    SelectionChangedCommand="{Binding ViewPokemonDetailsCommand}"
+                    SelectionChangedCommandParameter="{Binding Source={x:Reference collectionView}, Path=SelectedItem}"
                     FlowDirection="LeftToRight">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="2" />
