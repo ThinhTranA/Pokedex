@@ -5,14 +5,128 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Pokedex.ViewModels"
+    xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ffc="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     mc:Ignorable="d"
+    BackgroundColor="{Binding PokemonModel.TypeColor}"
     x:Class="Pokedex.Views.PokemonDetailsPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label
-                Text="{Binding PokemonModel.DisplayName}"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <ff:SvgCachedImage
+                Source="resource://Pokedex.Images.grayBall.svg"
+                Margin="0,-72,-110,0"
+                VerticalOptions="Start"
+                HorizontalOptions="End"
+                Opacity="0.1"
+                HeightRequest="300"
+                WidthRequest="300" />
+
+            <Frame
+                BackgroundColor="White"
+                VerticalOptions="End"
+                CornerRadius="22"
+                HeightRequest="360">
+                <Grid x:Name="About">
+                    <StackLayout>
+                        <BoxView
+                            Margin="0,60"
+                            VerticalOptions="Start"
+                            HeightRequest="1"
+                            BackgroundColor="Gray" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <!--  Region ABOUT  -->
+                            <Label Grid.Row="0" Text="Species" />
+                            <Label Grid.Row="1" Text="Height" />
+                            <Label Grid.Row="2" Text="Weight" />
+                            <Label Grid.Row="3" Text="Abilities" />
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="{Binding PokemonModel.Species}" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding PokemonModel.Height, StringFormat='{0} (decimetres)'}" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding PokemonModel.Weight, StringFormat='{0} (hectograms)'}" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Text="{Binding PokemonModel.Abilities}" />
+                            <!--  Endregion  -->
+
+                            <!--  Region Breeding  -->
+                            <Label
+                                Grid.Row="4"
+                                Text="Breeding"
+                                FontSize="20"
+                                FontAttributes="Bold" />
+                            <Label Grid.Row="5" Text="Gender" />
+                            <Label Grid.Row="6" Text="Egg Groups" />
+                            <Label Grid.Row="7" Text="Grass" />
+
+                            <Label
+                                Grid.Row="5"
+                                Grid.Column="1"
+                                Text="{Binding PokemonModel.GenderRate}" />
+                            <Label
+                                Grid.Row="6"
+                                Grid.Column="1"
+                                Text="{Binding PokemonModel.EggGroups}" />
+                            <Label
+                                Grid.Row="7"
+                                Grid.Column="1"
+                                Text="{Binding PokemonModel.HasGenderDifferences}" />
+
+
+                            <!--  Endregion  -->
+                        </Grid>
+                    </StackLayout>
+
+                </Grid>
+            </Frame>
+
+            <Grid Margin="20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Button
+                    Text="Back"
+                    VerticalOptions="End"
+                    HorizontalOptions="Start" />
+
+                <Label
+                    Grid.Row="1"
+                    Text="{Binding PokemonModel.DisplayName}"
+                    TextColor="White"
+                    VerticalOptions="Start"
+                    FontSize="36"
+                    FontAttributes="Bold" />
+
+                <CarouselView
+                    Grid.Row="2"
+                    x:Name="collectionView"
+                    ItemsSource="{Binding PokemonModel.Sprites}"
+                    FlowDirection="LeftToRight">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <ffc:CachedImage Source="{Binding .}" HeightRequest="200" />
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

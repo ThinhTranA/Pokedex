@@ -18,15 +18,31 @@ namespace Pokedex.Extensions
                 TypeColor = pokemon.Types.ToTypeColor(),
                 Sprites = pokemon.Sprites.ToSpriteList(),
                 Types = pokemon.Types.ToPokemonTypeModel(),
-                Stats = pokemon.Stats.ToStatModels()
-                
+                Stats = pokemon.Stats.ToStatModels(),
+
+                Species = pokemon.Species.Name,
+                Height = pokemon.Height,
+                Weight = pokemon.Weight,
+                Abilities = pokemon.Abilities.ToAblilitesString(),
+
+                GenderRate = 2,
+                EggGroups = "egg groups",
+                HasGenderDifferences = true
+
             };
 
             return pokemonModel;
         }
 
-        
-       
+        public static string ToAblilitesString(this List<PokemonAbility> abilities)
+        {
+            var ablityString = string.Empty;
+            foreach(var ab in abilities)
+            {
+                ablityString += $"{ab.Ability.Name}, ";
+            }
+            return ablityString.Substring(0, ablityString.Length - 2);
+        }
 
         public static List<string> ToSpriteList(this PokemonSprites sprites)
         {
