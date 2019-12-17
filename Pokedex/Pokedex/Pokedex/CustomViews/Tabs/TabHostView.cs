@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
 using Pokedex.CustomViews.Tabs;
+using Pokedex.RenderedViews;
 using Xamarin.Forms;
 
 namespace Pokedex.CustomViews
