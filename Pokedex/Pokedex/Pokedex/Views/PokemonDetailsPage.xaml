@@ -9,6 +9,7 @@
     xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:ffc="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:icon="clr-namespace:Pokedex.FontIcons;assembly=Pokedex"
+    xmlns:tabs="clr-namespace:Sharpnado.Presentation.Forms.CustomViews.Tabs;assembly=Sharpnado.Presentation.Forms"
     mc:Ignorable="d"
     BackgroundColor="{Binding PokemonModel.TypeColor}"
     x:Class="Pokedex.Views.PokemonDetailsPage">
@@ -134,6 +135,15 @@
                         </DataTemplate>
                     </CarouselView.ItemTemplate>
                 </CarouselView>
+                
+                <ScrollView Grid.Row="3">
+                    <tabs:ViewSwitcher  SelectedIndex="1" >
+                        <Label Text="aaa"></Label>
+                        <Label Text="bbb"></Label>
+                        <Label Text="ccc"></Label>
+                    </tabs:ViewSwitcher>
+                </ScrollView>
+              
 
             </Grid>
         </Grid>
