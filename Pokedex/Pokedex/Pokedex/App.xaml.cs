@@ -10,6 +10,10 @@ namespace Pokedex
         {
             InitializeComponent();
 
+#if DEBUG
+            HotReloader.Current.Run(this);   
+#endif
+
             MainPage = new HomePage();
         }
 

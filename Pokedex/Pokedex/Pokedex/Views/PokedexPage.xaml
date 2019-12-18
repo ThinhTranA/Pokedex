@@ -8,6 +8,7 @@
     xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:ffc="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:style="clr-namespace:Pokedex.Styles"
+    xmlns:icon="clr-namespace:Pokedex.FontIcons;assembly=Pokedex"
     mc:Ignorable="d"
     x:Class="Pokedex.Views.PokedexPage">
     <ContentPage.BindingContext>
@@ -36,15 +37,17 @@
             <Grid Margin="20,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80" />
-                    <RowDefinition Height="100" />
+                    <RowDefinition Height="80" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-
-
                 <Button
-                    Text="Back"
-                    Command="{Binding ViewPokemonDetailsCommand}"
+                    Style="{StaticResource MaterialIconsButton}"
+                    Text="{x:Static icon:MaterialIcons.ArrowLeft}"
+                    FontSize="30"
+                    WidthRequest="50"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
                     VerticalOptions="End"
                     HorizontalOptions="Start" />
 

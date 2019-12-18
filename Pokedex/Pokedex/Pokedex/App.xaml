@@ -6,6 +6,20 @@
              mc:Ignorable="d"
              x:Class="Pokedex.App">
     <Application.Resources>
-
+        <OnPlatform x:Key="Material" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="Material Design Icons" />
+            <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons" />
+        </OnPlatform>
+        
+        <Style TargetType="{x:Type Label}" x:Key="MaterialIcons">
+            <Setter Property="FontFamily" Value="{StaticResource Material}"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="TextColor" Value="LightSkyBlue"/>
+            <Setter Property="FontSize" Value="Large"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="MaterialIconsButton">
+            <Setter Property="FontFamily" Value="{StaticResource Material}"/>
+        </Style>
     </Application.Resources>
 </Application>
