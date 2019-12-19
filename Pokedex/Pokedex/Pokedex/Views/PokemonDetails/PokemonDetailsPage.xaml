@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Pokedex.ViewModels"
+    xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ffc="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:icon="clr-namespace:Pokedex.FontIcons;assembly=Pokedex"
+    xmlns:tabs="clr-namespace:Sharpnado.Presentation.Forms.CustomViews.Tabs;assembly=Sharpnado.Presentation.Forms"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:rainbows="clr-namespace:Xamarin.Forms.DebugRainbows;assembly=Xamarin.Forms.DebugRainbows"
+    xmlns:styles="clr-namespace:Pokedex.Styles;assembly=Pokedex"
+    xmlns:pokemonDetails="clr-namespace:Pokedex.Views.PokemonDetails;assembly=Pokedex"
+    mc:Ignorable="d"
+    BackgroundColor="{Binding PokemonModel.TypeColor}"
+    x:Class="Pokedex.Views.PokemonDetailsPage">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <styles:Colors />
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="TabTextStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="0,0,0,16"/>
+            </Style>
+            <Style x:Key="SelectedTabStyle" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="DarkBlue"/>
+                <Setter Property="HeightRequest" Value="2"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="Margin" Value="16,0"/>
+                <Setter Property="Opacity" Value="0.6"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <ff:SvgCachedImage
+                Source="resource://Pokedex.Images.grayBall.svg"
+                Margin="0,-72,-110,0"
+                VerticalOptions="Start"
+                HorizontalOptions="End"
+                Opacity="0.1"
+                HeightRequest="300"
+                WidthRequest="300" />
+            
+            <pancakeView:PancakeView
+                BackgroundColor="White"
+                VerticalOptions="End"
+                CornerRadius="32,32,0,0"
+                HeightRequest="360">
+                <Grid x:Name="About">
+                    <StackLayout>
+                        <Grid HeightRequest="100" HorizontalOptions="FillAndExpand">
+                            <BoxView
+                                VerticalOptions="End"
+                                Grid.ColumnSpan="4"
+                                Margin="24,1"
+                                HeightRequest="1"
+                                BackgroundColor="{StaticResource LightGrayColor}" />
+                            <Grid Grid.Column="0" >
+                                <Label  Style="{StaticResource TabTextStyle}" Text="About">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding AboutSelected}" Value="True">
+                                            <Setter Property="TextColor" Value="Gray"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Grid  Style="{StaticResource SelectedTabStyle}" IsVisible="{Binding AboutSelected}"/>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AboutCommand}"/>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                            
+                            
+                            <Grid Grid.Column="1" >
+                                <Label  Style="{StaticResource TabTextStyle}" Text="Base Stats">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding BaseStatsSelected}" Value="True">
+                                            <Setter Property="TextColor" Value="Gray"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Grid  Style="{StaticResource SelectedTabStyle}" IsVisible="{Binding BaseStatsSelected}"/>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BaseStatsCommand}"/>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                            
+                            <Grid Grid.Column="2" >
+                                <Label  Style="{StaticResource TabTextStyle}" Text="Evolution">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding EvolutionSelected}" Value="True">
+                                            <Setter Property="TextColor" Value="Gray"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Grid  Style="{StaticResource SelectedTabStyle}" IsVisible="{Binding EvolutionSelected}"/>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding EvolutionCommand}"/>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                            
+                            <Grid Grid.Column="3" >
+                                <Label  Style="{StaticResource TabTextStyle}" Text="Moves">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding MovesSelected}" Value="True">
+                                            <Setter Property="TextColor" Value="Gray"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Grid  Style="{StaticResource SelectedTabStyle}" IsVisible="{Binding MovesSelected}"/>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding MovesCommand}"/>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                           
+                        </Grid>
+                        
+                        <pokemonDetails:AboutView IsVisible="{Binding AboutSelected}"/>
+                        <pokemonDetails:BaseStatsView IsVisible="{Binding BaseStatsSelected}"/>
+                        <pokemonDetails:EvolutionView IsVisible="{Binding EvolutionSelected}"/>
+                        <pokemonDetails:MovesView IsVisible="{Binding MovesSelected}"/>
+                      
+                    </StackLayout>
+
+                </Grid>
+            </pancakeView:PancakeView>
+
+          
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

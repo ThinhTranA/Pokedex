@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pokedex.Views.PokemonDetails.AboutView">
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <!--  Region ABOUT  -->
+            <Label Grid.Row="0" Text="Species" />
+            <Label Grid.Row="1" Text="Height" />
+            <Label Grid.Row="2" Text="Weight" />
+            <Label Grid.Row="3" Text="Abilities" />
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="{Binding PokemonModel.Species}" />
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="{Binding PokemonModel.Height, StringFormat='{0} (decimetres)'}" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="{Binding PokemonModel.Weight, StringFormat='{0} (hectograms)'}" />
+            <Label
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="{Binding PokemonModel.Abilities}" />
+            <!--  Endregion  -->
+
+            <!--  Region Breeding  -->
+            <Label
+                Grid.Row="4"
+                Text="Breeding"
+                FontSize="20"
+                FontAttributes="Bold" />
+            <Label Grid.Row="5" Text="Gender" />
+            <Label Grid.Row="6" Text="Egg Groups" />
+            <Label Grid.Row="7" Text="Grass" />
+
+            <Label
+                Grid.Row="5"
+                Grid.Column="1"
+                Text="{Binding PokemonModel.GenderRate}" />
+            <Label
+                Grid.Row="6"
+                Grid.Column="1"
+                Text="{Binding PokemonModel.EggGroups}" />
+            <Label
+                Grid.Row="7"
+                Grid.Column="1"
+                Text="{Binding PokemonModel.HasGenderDifferences}" />
+
+
+            <!--  Endregion  -->
+        </Grid>
+    </ContentView.Content>
+</ContentView>

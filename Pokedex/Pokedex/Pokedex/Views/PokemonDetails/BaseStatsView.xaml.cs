@@ -1,4 +1,3 @@
-﻿using Pokedex.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Pokedex.Views
+namespace Pokedex.Views.PokemonDetails
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PokemonDetailsPage : ContentPage
+    public partial class BaseStatsView : ContentView
     {
-        PokemonDetailsViewModel viewModel;
-        public PokemonDetailsPage(PokemonDetailsViewModel viewModel)
+        public BaseStatsView()
         {
             InitializeComponent();
-
-            BindingContext = this.viewModel = viewModel;
-
         }
     }
 }
