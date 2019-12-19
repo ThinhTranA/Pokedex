@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:rainbows="clr-namespace:Xamarin.Forms.DebugRainbows;assembly=Xamarin.Forms.DebugRainbows" 
              mc:Ignorable="d"
              x:Class="Pokedex.App">
     <Application.Resources>
@@ -20,6 +21,11 @@
         </Style>
         <Style TargetType="{x:Type Button}" x:Key="MaterialIconsButton">
             <Setter Property="FontFamily" Value="{StaticResource Material}"/>
+        </Style>
+        
+        <!-- For debugging -->
+        <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+            <Setter Property="rainbows:DebugRainbow.IsDebug" Value="True" />
         </Style>
     </Application.Resources>
 </Application>

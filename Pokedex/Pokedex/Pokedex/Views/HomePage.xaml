@@ -56,7 +56,7 @@
 
             <Label
                 Grid.Row="0"
-                Text="What Pokemon &#x0a; are you looking for?"
+                Text="What Pokemon &#x0a;are you looking for?"
                 VerticalOptions="Start"
                 FontSize="36"
                 TextColor="Black"
