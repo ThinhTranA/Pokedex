@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -17,28 +17,33 @@
     mc:Ignorable="d"
     BackgroundColor="{Binding PokemonModel.TypeColor}"
     x:Class="Pokedex.Views.PokemonDetailsPage">
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <styles:Colors />
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="TabTextStyle" TargetType="Label">
-                <Setter Property="VerticalOptions" Value="End"/>
-                <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="Margin" Value="0,0,0,16"/>
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0,0,0,16" />
             </Style>
             <Style x:Key="SelectedTabStyle" TargetType="Grid">
-                <Setter Property="BackgroundColor" Value="DarkBlue"/>
-                <Setter Property="HeightRequest" Value="2"/>
-                <Setter Property="VerticalOptions" Value="End"/>
-                <Setter Property="Margin" Value="16,0"/>
-                <Setter Property="Opacity" Value="0.6"/>
+                <Setter Property="BackgroundColor" Value="DarkBlue" />
+                <Setter Property="HeightRequest" Value="2" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="Margin" Value="16,0" />
+                <Setter Property="Opacity" Value="0.6" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="64" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
             <ff:SvgCachedImage
                 Source="resource://Pokedex.Images.grayBall.svg"
                 Margin="0,-72,-110,0"
@@ -47,8 +52,12 @@
                 Opacity="0.1"
                 HeightRequest="300"
                 WidthRequest="300" />
-            
+
+
+
             <pancakeView:PancakeView
+                Grid.Row="1"
+                Grid.RowSpan="2"
                 BackgroundColor="White"
                 VerticalOptions="End"
                 CornerRadius="32,32,0,0"
@@ -62,76 +71,137 @@
                                 Margin="24,1"
                                 HeightRequest="1"
                                 BackgroundColor="{StaticResource LightGrayColor}" />
-                            <Grid Grid.Column="0" >
-                                <Label  Style="{StaticResource TabTextStyle}" Text="About">
+                            <Grid Grid.Column="0">
+                                <Label Style="{StaticResource TabTextStyle}" Text="About">
                                     <Label.Triggers>
-                                        <DataTrigger TargetType="Label" Binding="{Binding AboutSelected}" Value="True">
-                                            <Setter Property="TextColor" Value="Gray"/>
+                                        <DataTrigger
+                                            TargetType="Label"
+                                            Binding="{Binding AboutSelected}"
+                                            Value="True">
+                                            <Setter Property="TextColor" Value="Gray" />
                                         </DataTrigger>
                                     </Label.Triggers>
                                 </Label>
-                                <Grid  Style="{StaticResource SelectedTabStyle}" IsVisible="{Binding AboutSelected}"/>
+                                <Grid Style="{StaticResource SelectedTabStyle}" IsVisible="{Binding AboutSelected}" />
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding AboutCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding AboutCommand}" />
                                 </Grid.GestureRecognizers>
                             </Grid>
-                            
-                            
-                            <Grid Grid.Column="1" >
-                                <Label  Style="{StaticResource TabTextStyle}" Text="Base Stats">
+
+
+                            <Grid Grid.Column="1">
+                                <Label Style="{StaticResource TabTextStyle}" Text="Base Stats">
                                     <Label.Triggers>
-                                        <DataTrigger TargetType="Label" Binding="{Binding BaseStatsSelected}" Value="True">
-                                            <Setter Property="TextColor" Value="Gray"/>
+                                        <DataTrigger
+                                            TargetType="Label"
+                                            Binding="{Binding BaseStatsSelected}"
+                                            Value="True">
+                                            <Setter Property="TextColor" Value="Gray" />
                                         </DataTrigger>
                                     </Label.Triggers>
                                 </Label>
-                                <Grid  Style="{StaticResource SelectedTabStyle}" IsVisible="{Binding BaseStatsSelected}"/>
+                                <Grid Style="{StaticResource SelectedTabStyle}" IsVisible="{Binding BaseStatsSelected}" />
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding BaseStatsCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding BaseStatsCommand}" />
                                 </Grid.GestureRecognizers>
                             </Grid>
-                            
-                            <Grid Grid.Column="2" >
-                                <Label  Style="{StaticResource TabTextStyle}" Text="Evolution">
+
+                            <Grid Grid.Column="2">
+                                <Label Style="{StaticResource TabTextStyle}" Text="Evolution">
                                     <Label.Triggers>
-                                        <DataTrigger TargetType="Label" Binding="{Binding EvolutionSelected}" Value="True">
-                                            <Setter Property="TextColor" Value="Gray"/>
+                                        <DataTrigger
+                                            TargetType="Label"
+                                            Binding="{Binding EvolutionSelected}"
+                                            Value="True">
+                                            <Setter Property="TextColor" Value="Gray" />
                                         </DataTrigger>
                                     </Label.Triggers>
                                 </Label>
-                                <Grid  Style="{StaticResource SelectedTabStyle}" IsVisible="{Binding EvolutionSelected}"/>
+                                <Grid Style="{StaticResource SelectedTabStyle}" IsVisible="{Binding EvolutionSelected}" />
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding EvolutionCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding EvolutionCommand}" />
                                 </Grid.GestureRecognizers>
                             </Grid>
-                            
-                            <Grid Grid.Column="3" >
-                                <Label  Style="{StaticResource TabTextStyle}" Text="Moves">
+
+                            <Grid Grid.Column="3">
+                                <Label Style="{StaticResource TabTextStyle}" Text="Moves">
                                     <Label.Triggers>
-                                        <DataTrigger TargetType="Label" Binding="{Binding MovesSelected}" Value="True">
-                                            <Setter Property="TextColor" Value="Gray"/>
+                                        <DataTrigger
+                                            TargetType="Label"
+                                            Binding="{Binding MovesSelected}"
+                                            Value="True">
+                                            <Setter Property="TextColor" Value="Gray" />
                                         </DataTrigger>
                                     </Label.Triggers>
                                 </Label>
-                                <Grid  Style="{StaticResource SelectedTabStyle}" IsVisible="{Binding MovesSelected}"/>
+                                <Grid Style="{StaticResource SelectedTabStyle}" IsVisible="{Binding MovesSelected}" />
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding MovesCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding MovesCommand}" />
                                 </Grid.GestureRecognizers>
                             </Grid>
-                           
+
                         </Grid>
-                        
-                        <pokemonDetails:AboutView IsVisible="{Binding AboutSelected}"/>
-                        <pokemonDetails:BaseStatsView IsVisible="{Binding BaseStatsSelected}"/>
-                        <pokemonDetails:EvolutionView IsVisible="{Binding EvolutionSelected}"/>
-                        <pokemonDetails:MovesView IsVisible="{Binding MovesSelected}"/>
-                      
+
+                        <pokemonDetails:AboutView IsVisible="{Binding AboutSelected}" Margin="20,0" />
+                        <pokemonDetails:BaseStatsView IsVisible="{Binding BaseStatsSelected}" />
+                        <pokemonDetails:EvolutionView IsVisible="{Binding EvolutionSelected}" />
+                        <pokemonDetails:MovesView IsVisible="{Binding MovesSelected}" />
+
                     </StackLayout>
 
                 </Grid>
             </pancakeView:PancakeView>
 
-          
+            <Grid
+                Margin="20,0"
+                Grid.Row="0"
+                Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Button
+                    Style="{StaticResource MaterialIconsButton}"
+                    Text="{x:Static icon:MaterialIcons.ArrowLeft}"
+                    FontSize="30"
+                    WidthRequest="50"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="End"
+                    HorizontalOptions="Start"
+                    Command="{Binding BackCommand}" />
+
+                <Label
+                    Grid.Row="1"
+                    Text="{Binding PokemonModel.DisplayName}"
+                    TextColor="White"
+                    VerticalOptions="Start"
+                    FontSize="36"
+                    FontAttributes="Bold" />
+
+                <CarouselView
+                    HeightRequest="250"
+                    Grid.Row="1"
+                    Grid.RowSpan="2"
+                    x:Name="collectionView"
+                    VerticalOptions="End"
+                    ItemsSource="{Binding PokemonModel.Sprites}"
+                    FlowDirection="LeftToRight">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <ffc:CachedImage
+                                Source="{Binding .}"
+                                HeightRequest="200"
+                                VerticalOptions="End" />
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+
+            </Grid>
+
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
