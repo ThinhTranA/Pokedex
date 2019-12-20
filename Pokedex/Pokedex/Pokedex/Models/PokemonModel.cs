@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using PropertyChanged;
 using Xamarin.Forms;
 
@@ -35,6 +36,8 @@ namespace Pokedex.Models
 
         //Stats
         public List<StatModel> Stats { get; set; }
+        public int TotalBaseStat => Stats.Select(x => x.BaseStat).Sum();
+        public double TotalProgressBaseStat =>((double) TotalBaseStat / (Stats.Count * 120));
 
         //Evolution
         public string Evolution { get; set; }

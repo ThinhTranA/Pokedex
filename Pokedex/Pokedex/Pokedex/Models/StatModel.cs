@@ -8,5 +8,8 @@ namespace Pokedex.Models
     {
         public string StatName { get; set; }
         public int BaseStat { get; set; }
+
+        public double BaseStatProgress => ((double) BaseStat / 120);
+        
     }
 }

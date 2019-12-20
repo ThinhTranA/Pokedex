@@ -1,9 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Pokedex.Views.PokemonDetails.BaseStatsView">
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Pokedex.Views.PokemonDetails.BaseStatsView">
     <ContentView.Content>
-       <Label Text="base stats"></Label>
+        <StackLayout>
+            <StackLayout BindableLayout.ItemsSource="{Binding PokemonModel.Stats}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120" />
+                                <ColumnDefinition Width="32" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding StatName}" />
+                            <Label
+                                Grid.Column="1"
+                                Text="{Binding BaseStat}"
+                                FontFamily="Bold"
+                                TextColor="Black" />
+                            <ProgressBar
+                                Grid.Column="2"
+                                Progress="{Binding BaseStatProgress}"
+                                ProgressColor="Green" />
+
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="32" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Total" />
+                <Label
+                    Grid.Column="1"
+                    Text="{Binding PokemonModel.TotalBaseStat}"
+                    FontFamily="Bold"
+                    TextColor="Black" />
+                <ProgressBar
+                    Grid.Column="2"
+                    Progress="{Binding PokemonModel.TotalProgressBaseStat}"
+                    ProgressColor="Red" />
+
+            </Grid>
+        </StackLayout>
+
     </ContentView.Content>
 </ContentView>

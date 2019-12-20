@@ -142,8 +142,8 @@
 
                         </Grid>
 
-                        <pokemonDetails:AboutView IsVisible="{Binding AboutSelected}" Margin="20,0" />
-                        <pokemonDetails:BaseStatsView IsVisible="{Binding BaseStatsSelected}" />
+                        <pokemonDetails:AboutView IsVisible="{Binding AboutSelected}" Margin="16,0" />
+                        <pokemonDetails:BaseStatsView IsVisible="{Binding BaseStatsSelected}" Margin="16,20" />
                         <pokemonDetails:EvolutionView IsVisible="{Binding EvolutionSelected}" />
                         <pokemonDetails:MovesView IsVisible="{Binding MovesSelected}" />
 
