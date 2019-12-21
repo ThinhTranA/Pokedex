@@ -32,7 +32,7 @@ namespace Pokedex.ViewModels
                 new PokemonDetailsPage(new PokemonDetailsViewModel((PokemonModel)selectedPokemon))
                 );
         }
-
+        
         public async Task LoadPokemons()
         {
             var pokiApiClient = new PokeApiClient();

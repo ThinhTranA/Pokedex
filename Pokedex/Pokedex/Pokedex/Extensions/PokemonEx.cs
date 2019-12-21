@@ -2,6 +2,7 @@
 using Pokedex.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -27,7 +28,9 @@ namespace Pokedex.Extensions
 
                 GenderRate = 2,
                 EggGroups = "egg groups",
-                HasGenderDifferences = true
+                HasGenderDifferences = true,
+
+                Moves = pokemon.Moves.ToMoveModels()
 
             };
 
@@ -85,5 +88,17 @@ namespace Pokedex.Extensions
 
             return statModel;
         }
+
+        public static List<MoveModel> ToMoveModels(this List<PokemonMove> pokemonMoves)
+        {
+            return pokemonMoves.Select(m =>
+                new MoveModel
+                {
+                    Name = m.Move.Name,
+                    LevelLearnedAt = m.VersionGroupDetails.First().LevelLearnedAt
+                }
+            ).ToList();
+        }
+
     }
 }
